@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+# Add Sitemap once your final domain is connected.

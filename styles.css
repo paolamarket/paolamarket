@@ -5,3 +5,27 @@
 @media(max-width:1100px){.top-offer{margin-top:74px}.top-offer-inner{padding:12px 22px;align-items:flex-start;flex-direction:column;gap:10px}.top-offer-copy{width:100%}.top-offer-actions{width:100%;justify-content:flex-start}.hero{min-height:auto;grid-template-columns:1fr}.selection-grid{grid-template-columns:repeat(2,1fr)}.hero:before{background:linear-gradient(180deg,rgba(9,8,6,.93),rgba(9,8,6,.64))}.hero-copy{text-align:center}.hero-text,.trust-row{margin-left:auto;margin-right:auto}.hero-actions,.trust-row{justify-content:center}.hero-art{grid-row:1;min-height:520px;margin-bottom:-70px}.hero-logo{width:min(520px,72vw)}.gold-orbit{width:min(560px,78vw)}.experience,.visit{grid-template-columns:1fr}.experience{gap:50px}.map-art{height:430px}.responsible{grid-template-columns:1fr}.blog-grid{grid-template-columns:1fr 1fr}.blog-grid .post-card:last-child{grid-column:1/-1}.site-header{height:74px;padding:0 22px}.brand span{display:none}.menu-toggle{display:block}.nav{position:fixed;top:74px;left:18px;right:18px;display:flex;flex-direction:column;align-items:stretch;gap:0;background:#0d0a07;border:1px solid var(--line);border-radius:20px;padding:12px;opacity:0;transform:translateY(-10px);pointer-events:none;transition:.25s}.nav.open{opacity:1;transform:none;pointer-events:auto}.nav a{padding:15px}.nav-pill{border:0}.section{padding:95px 24px}footer{grid-template-columns:1fr;justify-items:start}.footer-links{order:2}footer>p{text-align:left;order:3}}
 @media(max-width:640px){.top-offer-inner{padding:11px 20px}.top-offer-copy{align-items:flex-start}.top-offer-copy>div{flex-direction:column;gap:2px}.top-offer-copy strong{font-size:18px}.top-offer-copy div span{font-size:8px}.offer-link{flex:1;min-width:150px}.hero{padding:105px 20px 55px}.hero-art{min-height:390px;margin-bottom:-35px}.hero-logo{width:88vw}.float-chip{display:none}.hero h1{font-size:62px}.hero-text{font-size:14px}.hero-actions,.visit-actions{flex-direction:column}.btn{width:100%}.trust-row{gap:20px;justify-content:space-between}.trust-row b{font-size:16px}.selection-grid,.blog-grid{grid-template-columns:1fr}.blog-grid .post-card:last-child{grid-column:auto}.selection-card{min-height:330px}.card-num,.accent-card .eyebrow{margin-bottom:45px}.experience-visual{min-height:430px}.monogram{font-size:130px}.visual-copy strong{font-size:33px}.section-heading h2,.experience-copy h2,.visit-panel h2{font-size:50px}.visit-panel{padding:32px 24px}.age-card{padding:34px 22px}.age-card h1{font-size:40px}.age-actions{flex-direction:column}.responsible h2{font-size:46px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+
+/* Google Maps location card */
+.google-map-card{height:560px;border-radius:32px;border:1px solid var(--line);position:relative;overflow:hidden;background:#0e0b08;box-shadow:0 24px 70px rgba(0,0,0,.28)}
+.google-map-frame{width:100%;height:100%;border:0;display:block;filter:saturate(.92) contrast(1.02)}
+.google-map-overlay{position:absolute;inset:0;z-index:3;display:flex;align-items:flex-end;justify-content:flex-end;padding:22px;background:linear-gradient(180deg,transparent 64%,rgba(0,0,0,.12));cursor:pointer}
+.map-open-badge{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 17px;border-radius:999px;background:#fff;color:#202124;font:600 12px/1.1 Arial,sans-serif;letter-spacing:.01em;box-shadow:0 4px 18px rgba(0,0,0,.25);transition:transform .25s ease,box-shadow .25s ease}
+.google-map-overlay:hover .map-open-badge{transform:translateY(-2px);box-shadow:0 7px 24px rgba(0,0,0,.32)}
+@media(max-width:1100px){.google-map-card{height:430px}}
+@media(max-width:640px){.google-map-card{height:360px;border-radius:24px}.google-map-overlay{padding:14px}.map-open-badge{min-height:42px;padding:0 14px;font-size:11px}}
+
+
+/* Local search content: intentionally visible and useful, not hidden keyword text. */
+.local-seo{max-width:1050px;margin:0 auto;text-align:center;border-top:1px solid rgba(212,169,72,.16);border-bottom:1px solid rgba(212,169,72,.16)}
+.local-seo h2{margin:.45rem 0 1rem}.local-seo p:last-child{max-width:820px;margin:0 auto;color:var(--muted);line-height:1.9}.local-seo a{color:var(--gold);text-decoration:none}.local-seo a:hover{text-decoration:underline}
+
+
+/* Store hours */
+.hours-section{padding-top:80px;padding-bottom:80px;background:linear-gradient(180deg,transparent,rgba(255,255,255,.015),transparent)}
+.hours-card{max-width:760px;margin:0 auto;border:1px solid var(--line);border-radius:28px;overflow:hidden;background:linear-gradient(145deg,#15100a,#0b0806);box-shadow:0 24px 70px rgba(0,0,0,.22)}
+.hours-row{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 28px;border-bottom:1px solid var(--line)}
+.hours-row:last-child{border-bottom:0}
+.hours-row span{font-family:var(--serif);font-size:24px;color:var(--cream)}
+.hours-row strong{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold2)}
+@media(max-width:640px){.hours-row{padding:17px 20px}.hours-row span{font-size:21px}.hours-row strong{font-size:10px}}
