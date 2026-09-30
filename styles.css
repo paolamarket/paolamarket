@@ -176,3 +176,16 @@
 .monogram,.visual-copy{display:none!important}
 @media(max-width:1100px){.experience-emblem{width:min(430px,72%)}.experience-ribbon{width:calc(100% - 48px)}}
 @media(max-width:640px){.experience-visual{min-height:520px}.halo-one{width:360px;height:360px}.halo-two{width:280px;height:280px}.experience-emblem{width:80%}.emblem-logo-wrap{width:235px}.emblem-tagline{font-size:19px}.experience-chip{font-size:7px;padding:8px 10px}.ec-wine{left:5%;top:24%}.ec-beer{right:5%;top:24%}.ec-spirits{left:5%;bottom:27%}.ec-cigars{right:5%;bottom:27%}.experience-ribbon{bottom:20px;width:calc(100% - 28px);gap:7px;font-size:6.8px;letter-spacing:.09em;padding:10px 6px}}
+
+/* Expanded Shop by Occasion section */
+.occasion-feature{grid-column:1/-1;min-height:270px;display:flex;align-items:flex-end;justify-content:space-between;gap:40px;padding:42px 46px;background:radial-gradient(circle at 88% 0%,rgba(240,209,123,.2),transparent 36%),linear-gradient(135deg,#171008,#0b0806)}
+.occasion-feature:before{width:420px;height:420px;right:-110px;top:-180px}
+.occasion-feature>div:first-child{max-width:760px}
+.occasion-feature .eyebrow{margin:0 0 24px}
+.occasion-feature h3{font-size:clamp(42px,5vw,72px);line-height:.96;margin:0 0 16px}
+.occasion-feature p{max-width:720px;margin:0}
+.occasion-feature-actions{display:flex;flex-direction:column;gap:12px;min-width:220px;align-items:flex-start}
+.occasion-feature-actions a{display:inline-flex;align-items:center;gap:10px;padding:13px 18px;border:1px solid rgba(240,209,123,.25);border-radius:999px;color:var(--gold2);font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.12em;transition:.3s}
+.occasion-feature-actions a:hover{border-color:rgba(240,209,123,.6);transform:translateY(-2px);background:rgba(240,209,123,.06)}
+@media(max-width:1100px){.occasion-feature{grid-column:1/-1}}
+@media(max-width:640px){.occasion-feature{display:block;padding:32px 26px;min-height:auto}.occasion-feature-actions{margin-top:26px;min-width:0}.occasion-feature-actions a{width:100%;justify-content:center}.occasion-feature h3{font-size:42px}}
