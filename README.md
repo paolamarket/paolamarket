@@ -35,3 +35,12 @@ Edit `.github/workflows/auto-blog.yml` and change the `cron` line.
 
 ## Store hours / phone / social links
 These were not added because they were not provided. Add them once finalized.
+
+
+## Auto-blog library and retention
+- `data/topics.json` contains **1,000 unique blog topics**.
+- The GitHub Action publishes one topic per scheduled run.
+- The publisher automatically deletes generated blog HTML files and `posts.json` entries **after they are more than 60 days old**.
+- A post dated exactly 60 days ago remains live; it is removed beginning on day 61.
+- With one post per day, the live blog will normally contain about 60 recent auto-generated posts, plus any manually maintained posts still within the same retention window.
+- The topic index keeps moving forward, so the 1,000-topic library provides roughly 2.7 years of daily topics before cycling.
