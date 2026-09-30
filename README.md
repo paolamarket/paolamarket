@@ -91,3 +91,7 @@ Open `index.html` and search for `TASTING EVENT: EASY UPDATE AREA`. Replace only
 - Linked the tastings FAQ directly to the Tastings section.
 - Standardized phone links to `tel:+19132834560` for mobile dialing.
 - Changed every Directions/Open in Maps action to Google Maps Directions with Paola Market's destination prefilled.
+
+
+## v15 visual update
+The Paola Market Experience section now uses the official logo, category chips, and service ribbon instead of the empty PM monogram panel.

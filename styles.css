@@ -155,3 +155,24 @@
 .faq-list details p a{color:var(--gold,#d8b45a);text-decoration:underline;text-underline-offset:3px}
 .faq-list details p a:hover{filter:brightness(1.15)}
 @media (max-width:640px){.tasting-socials{flex-direction:column}.tasting-socials .btn{width:100%;justify-content:center}}
+
+
+/* v15 — richer experience visual */
+.experience-visual{min-height:650px;isolation:isolate;background:radial-gradient(circle at 50% 30%,rgba(240,209,123,.16),transparent 28%),radial-gradient(circle at 15% 90%,rgba(157,106,22,.10),transparent 32%),linear-gradient(145deg,#17110b,#080706)}
+.experience-visual:before,.experience-visual:after{display:none}
+.experience-halo{position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;z-index:0}
+.halo-one{width:510px;height:510px;border:1px solid rgba(240,209,123,.13);box-shadow:0 0 90px rgba(215,163,59,.055) inset}
+.halo-two{width:385px;height:385px;border:1px solid rgba(240,209,123,.10)}
+.experience-emblem{position:relative;z-index:2;width:min(410px,76%);display:flex;flex-direction:column;align-items:center;text-align:center}
+.emblem-kicker{font-size:9px;letter-spacing:.26em;color:var(--gold2);font-weight:700;margin-bottom:15px}
+.emblem-logo-wrap{width:310px;max-width:82%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;padding:13px;position:relative;background:radial-gradient(circle,rgba(240,209,123,.10),rgba(255,255,255,.015) 55%,transparent 72%);border:1px solid rgba(240,209,123,.15);box-shadow:0 30px 70px rgba(0,0,0,.42)}
+.emblem-logo-wrap:after{content:"";position:absolute;inset:-17px;border:1px solid rgba(240,209,123,.075);border-radius:50%}
+.experience-logo{width:100%;height:100%;object-fit:contain;border-radius:50%;filter:drop-shadow(0 16px 24px rgba(0,0,0,.5))}
+.emblem-tagline{margin-top:20px;color:var(--cream);font-family:var(--serif);font-size:24px;letter-spacing:.08em}
+.experience-chip{position:absolute;z-index:3;padding:9px 13px;border:1px solid rgba(240,209,123,.23);border-radius:999px;background:rgba(10,8,6,.72);backdrop-filter:blur(8px);color:var(--gold2);font-size:8px;font-weight:800;letter-spacing:.17em;box-shadow:0 10px 25px rgba(0,0,0,.24)}
+.ec-wine{left:7%;top:23%}.ec-beer{right:7%;top:27%}.ec-spirits{left:8%;bottom:25%}.ec-cigars{right:7%;bottom:25%}
+.experience-ribbon{position:absolute;z-index:3;left:50%;bottom:28px;transform:translateX(-50%);width:calc(100% - 64px);display:flex;align-items:center;justify-content:center;gap:12px;padding:11px 16px;border-top:1px solid rgba(240,209,123,.13);color:#9f927f;font-size:8px;font-weight:700;letter-spacing:.14em;text-align:center;white-space:nowrap}
+.experience-ribbon i{font-style:normal;color:var(--gold2)}
+.monogram,.visual-copy{display:none!important}
+@media(max-width:1100px){.experience-emblem{width:min(430px,72%)}.experience-ribbon{width:calc(100% - 48px)}}
+@media(max-width:640px){.experience-visual{min-height:520px}.halo-one{width:360px;height:360px}.halo-two{width:280px;height:280px}.experience-emblem{width:80%}.emblem-logo-wrap{width:235px}.emblem-tagline{font-size:19px}.experience-chip{font-size:7px;padding:8px 10px}.ec-wine{left:5%;top:24%}.ec-beer{right:5%;top:24%}.ec-spirits{left:5%;bottom:27%}.ec-cigars{right:5%;bottom:27%}.experience-ribbon{bottom:20px;width:calc(100% - 28px);gap:7px;font-size:6.8px;letter-spacing:.09em;padding:10px 6px}}
