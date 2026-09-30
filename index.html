@@ -54,7 +54,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
   <div class="age-gate" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageTitle">
@@ -188,16 +188,27 @@
       <div class="section-heading reveal">
         <p class="eyebrow">Store hours</p>
         <h2>Open seven days a <span>week.</span></h2>
-        <p>Plan your visit to Paola Market at 304 Baptiste Dr in Paola, Kansas.</p>
+        <p>Easy hours for everyday shopping, weekend gatherings, and last-minute favorites.</p>
       </div>
-      <div class="hours-card reveal">
-        <div class="hours-row"><span>Monday</span><strong>10 AM–10 PM</strong></div>
-        <div class="hours-row"><span>Tuesday</span><strong>10 AM–10 PM</strong></div>
-        <div class="hours-row"><span>Wednesday</span><strong>10 AM–10 PM</strong></div>
-        <div class="hours-row"><span>Thursday</span><strong>10 AM–10 PM</strong></div>
-        <div class="hours-row"><span>Friday</span><strong>10 AM–10 PM</strong></div>
-        <div class="hours-row"><span>Saturday</span><strong>12 PM–8 PM</strong></div>
-        <div class="hours-row"><span>Sunday</span><strong>10 AM–10 PM</strong></div>
+      <div class="hours-shell reveal">
+        <div class="hours-feature">
+          <span class="hours-icon" aria-hidden="true">◷</span>
+          <div>
+            <p>Visit Paola Market</p>
+            <strong>304 Baptiste Dr, Paola, KS</strong>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=304+Baptiste+Dr+Paola+KS" target="_blank" rel="noopener">Get directions ↗</a>
+        </div>
+        <div class="hours-grid" aria-label="Paola Market store hours">
+          <div class="day-card"><span>MON</span><strong>10 AM</strong><i>to</i><strong>10 PM</strong></div>
+          <div class="day-card"><span>TUE</span><strong>10 AM</strong><i>to</i><strong>10 PM</strong></div>
+          <div class="day-card"><span>WED</span><strong>10 AM</strong><i>to</i><strong>10 PM</strong></div>
+          <div class="day-card"><span>THU</span><strong>10 AM</strong><i>to</i><strong>10 PM</strong></div>
+          <div class="day-card"><span>FRI</span><strong>10 AM</strong><i>to</i><strong>10 PM</strong></div>
+          <div class="day-card saturday"><span>SAT</span><strong>12 PM</strong><i>to</i><strong>8 PM</strong></div>
+          <div class="day-card"><span>SUN</span><strong>10 AM</strong><i>to</i><strong>10 PM</strong></div>
+        </div>
+        <p class="hours-note">Hours may change on holidays. Call <a href="tel:+19132834560">(913) 283-4560</a> if you need to confirm before your visit.</p>
       </div>
     </section>
 
@@ -210,17 +221,28 @@
         <div class="visit-actions"><a class="btn btn-gold" href="https://www.google.com/maps/search/?api=1&query=304+Baptiste+Dr+Paola+KS" target="_blank" rel="noopener">Open in Maps</a><a class="btn btn-ghost" href="tel:+19132834560">Call (913) 283-4560</a><a class="btn btn-ghost" href="https://g.page/r/CYXAreq0fBxnEAE/review" target="_blank" rel="noopener">Leave a Google Review</a><a class="btn btn-ghost" href="https://www.facebook.com/profile.php?id=61594040680348" target="_blank" rel="noopener noreferrer" aria-label="Follow Paola Market on Facebook">Facebook</a><a class="btn btn-ghost" href="https://www.instagram.com/paola.market.ks/" target="_blank" rel="noopener noreferrer" aria-label="Follow Paola Market on Instagram">Instagram</a></div>
       </div>
       <div class="google-map-card reveal" data-delay="120">
-        <iframe
-          class="google-map-frame"
-          title="Paola Market on Google Maps"
-          src="https://www.google.com/maps?q=304+Baptiste+Dr,+Paola,+KS&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen>
-        </iframe>
-        <a class="google-map-overlay" href="https://www.google.com/maps/search/?api=1&query=304+Baptiste+Dr+Paola+KS" target="_blank" rel="noopener" aria-label="Open Paola Market in Google Maps">
-          <span class="map-open-badge">Open in Google Maps ↗</span>
-        </a>
+        <div class="map-topbar">
+          <div class="map-place">
+            <span class="map-pin-dot" aria-hidden="true"></span>
+            <div><strong>Paola Market</strong><small>304 Baptiste Dr · Paola, KS</small></div>
+          </div>
+          <span class="map-google">Google Maps</span>
+        </div>
+        <div class="map-canvas">
+          <iframe
+            class="google-map-frame"
+            title="Paola Market on Google Maps"
+            src="https://www.google.com/maps?q=304+Baptiste+Dr,+Paola,+KS&z=16&output=embed"
+            width="100%" height="100%" style="border:0;width:100%;height:100%;display:block"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+          <a class="google-map-overlay" href="https://www.google.com/maps/search/?api=1&query=Paola+Market+304+Baptiste+Dr+Paola+KS" target="_blank" rel="noopener" aria-label="Open Paola Market in Google Maps"></a>
+          <a class="map-open-badge" href="https://www.google.com/maps/search/?api=1&query=Paola+Market+304+Baptiste+Dr+Paola+KS" target="_blank" rel="noopener">
+            <span class="map-arrow" aria-hidden="true">↗</span> Open in Google Maps
+          </a>
+        </div>
       </div>
     </section>
 
