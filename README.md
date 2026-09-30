@@ -83,3 +83,11 @@ This version adds original Paola Market sections inspired by useful patterns fou
 
 ### Updating the tasting section
 Open `index.html` and search for `TASTING EVENT: EASY UPDATE AREA`. Replace only the content inside the `.tasting-event-card` block with the event name, date, time, featured product/category, and any 21+ details. When there is no scheduled tasting, leave the current placeholder card in place.
+
+## v14 link and FAQ updates
+- Added Instagram beside Facebook in the Tastings section.
+- Removed the Google Review FAQ item.
+- Linked the drink-recipes FAQ directly to The Paola Pour blog.
+- Linked the tastings FAQ directly to the Tastings section.
+- Standardized phone links to `tel:+19132834560` for mobile dialing.
+- Changed every Directions/Open in Maps action to Google Maps Directions with Paola Market's destination prefilled.
