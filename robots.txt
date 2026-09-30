@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-# Add Sitemap once your final domain is connected.
+# Sitemap line will be added automatically after data/site_config.json contains your final domain.

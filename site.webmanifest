@@ -1,0 +1,17 @@
+{
+  "name": "Paola Market",
+  "short_name": "Paola Market",
+  "description": "Paola Market liquor store and smoke shop in Paola, Kansas.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#090806",
+  "theme_color": "#090806",
+  "icons": [
+    {
+      "src": "assets/paola-market-logo.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
