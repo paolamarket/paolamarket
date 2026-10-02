@@ -59,7 +59,14 @@ jobs:
         run: |
           git config user.name "Paola Market Blog Bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -A blog/posts data/posts.json data/state.json sitemap.xml robots.txt || true
+
+          # Stage every file changed by the generator. Using a plain `git add -A`
+          # avoids a missing optional file (for example sitemap.xml before a
+          # custom domain is configured) causing the whole staging command to fail.
+          git add -A
+
+          echo "Changed files:"
+          git status --short
 
           if git diff --cached --quiet; then
             echo "No blog changes to commit. Today's post may already be published."
@@ -68,4 +75,4 @@ jobs:
 
           TODAY=$(TZ=America/Chicago date +%F)
           git commit -m "Publish Paola Market blog - ${TODAY}"
-          git push
+          git push origin HEAD:${GITHUB_REF_NAME}
