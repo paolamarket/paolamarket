@@ -118,3 +118,6 @@ The workflow also:
 - rebuilds SEO/sitemap files after each run.
 
 **Important:** GitHub scheduled workflows only run from the repository's default branch. Keep `.github/workflows/auto-blog.yml` on that branch and keep GitHub Actions enabled for the repository.
+
+## v19 auto-blog commit fix
+The workflow now stages generated changes with `git add -A`. This prevents the commit step from silently skipping the new article when an optional file such as `sitemap.xml` does not yet exist. The workflow also prints `git status --short` before committing so you can see exactly which generated files will be pushed.
