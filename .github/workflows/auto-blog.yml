@@ -1,0 +1,71 @@
+name: Publish Paola Market Blog
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Primary daily run: 10:17 AM in Paola, Kansas.
+    # Two later retry windows make the automation more reliable if GitHub delays
+    # or drops a scheduled job. The Python script guarantees only ONE post per
+    # America/Chicago calendar day, so retry runs safely become no-ops.
+    - cron: '17 10,11,12 * * *'
+      timezone: "America/Chicago"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: paola-market-auto-blog
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out default branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Show schedule diagnostics
+        run: |
+          echo "Event: $GITHUB_EVENT_NAME"
+          echo "UTC time:"
+          date -u
+          echo "Paola time:"
+          TZ=America/Chicago date
+          echo "Branch: $GITHUB_REF_NAME"
+
+      - name: Validate blog files
+        run: |
+          test -f tools/auto_blog.py
+          test -f tools/seo_site.py
+          test -f data/topics.json
+          test -f data/posts.json
+          test -f data/state.json
+
+      - name: Generate today's article and prune posts older than 60 days
+        env:
+          TZ: America/Chicago
+        run: python tools/auto_blog.py
+
+      - name: Commit and push blog changes
+        run: |
+          git config user.name "Paola Market Blog Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A blog/posts data/posts.json data/state.json sitemap.xml robots.txt || true
+
+          if git diff --cached --quiet; then
+            echo "No blog changes to commit. Today's post may already be published."
+            exit 0
+          fi
+
+          TODAY=$(TZ=America/Chicago date +%F)
+          git commit -m "Publish Paola Market blog - ${TODAY}"
+          git push
