@@ -95,3 +95,26 @@ Open `index.html` and search for `TASTING EVENT: EASY UPDATE AREA`. Replace only
 
 ## v15 visual update
 The Paola Market Experience section now uses the official logo, category chips, and service ribbon instead of the empty PM monogram panel.
+
+
+## Auto-blog schedule fix (v17)
+- Daily schedule is now **10:17 AM America/Chicago** using GitHub Actions timezone-aware scheduling.
+- The 17-minute offset intentionally avoids the top of the hour, when GitHub says scheduled runs can be delayed or occasionally dropped during high load.
+- `workflow_dispatch` remains enabled so you can test the blog manually from **GitHub → Actions → Publish Paola Market Blog → Run workflow**.
+- The workflow must exist on the repository's **default branch** and GitHub Actions must be enabled.
+- If the repository is public and has no activity for 60 days, GitHub may automatically disable scheduled workflows until re-enabled.
+
+## Daily auto-blog reliability update (v18)
+
+The GitHub Actions workflow now automatically checks the blog every day at **10:17 AM, 11:17 AM, and 12:17 PM America/Chicago**. These are retry windows, not three posts. `tools/auto_blog.py` now guarantees a maximum of **one new post per Paola calendar day**. If the 10:17 AM GitHub schedule is delayed or dropped, a later retry can still publish that day's post. Once a post exists for the day, subsequent retry runs make no duplicate article.
+
+The workflow also:
+- keeps `workflow_dispatch` for manual testing,
+- uses `contents: write` so it can commit the generated article,
+- serializes blog runs with a concurrency group,
+- validates required blog files before generation,
+- uses `America/Chicago` for publication dates,
+- continues deleting generated posts older than 60 days,
+- rebuilds SEO/sitemap files after each run.
+
+**Important:** GitHub scheduled workflows only run from the repository's default branch. Keep `.github/workflows/auto-blog.yml` on that branch and keep GitHub Actions enabled for the repository.

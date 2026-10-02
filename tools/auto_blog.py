@@ -6,15 +6,20 @@ and advances data/state.json. No paid AI service is required.
 from pathlib import Path
 import json, re, html, subprocess, sys
 from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 
 ROOT=Path(__file__).resolve().parents[1]
 TOPICS=ROOT/'data'/'topics.json'; POSTS=ROOT/'data'/'posts.json'; STATE=ROOT/'data'/'state.json'; OUT=ROOT/'blog'/'posts'
+LOCAL_TZ=ZoneInfo('America/Chicago')
+
+def local_today():
+    return datetime.now(LOCAL_TZ).date()
 
 def slugify(s): return re.sub(r'[^a-z0-9]+','-',s.lower()).strip('-')
 def esc(s): return html.escape(str(s))
 
 def article_html(topic, slug):
-    today=date.today().isoformat(); title=topic['title']; category=topic['category']
+    today=local_today().isoformat(); title=topic['title']; category=topic['category']
     if topic['kind']=='recipe':
         ingredients=''.join(f'<li>{esc(x)}</li>' for x in topic['ingredients'])
         steps=''.join(f'<li>{esc(x)}</li>' for x in topic['steps'])
@@ -33,7 +38,7 @@ def prune_old_posts(posts):
 
     A post dated exactly 60 days ago is retained. It is removed starting on day 61.
     """
-    cutoff = date.today() - timedelta(days=60)
+    cutoff = local_today() - timedelta(days=60)
     kept=[]
     removed=[]
     for post in posts:
@@ -56,18 +61,60 @@ def prune_old_posts(posts):
     return kept
 
 def main():
-    topics=json.loads(TOPICS.read_text()); posts=json.loads(POSTS.read_text()); state=json.loads(STATE.read_text())
+    topics=json.loads(TOPICS.read_text())
+    posts=json.loads(POSTS.read_text())
+    state=json.loads(STATE.read_text())
+
+    # Always perform retention cleanup, even on retry runs.
     posts=prune_old_posts(posts)
-    i=state.get('next_topic_index',0)%len(topics); topic=topics[i]; slug=slugify(topic['title'])
-    existing={p['slug'] for p in posts}
-    if slug in existing:
-        POSTS.write_text(json.dumps(posts,indent=2),encoding='utf-8'); state['next_topic_index']=(i+1)%len(topics); STATE.write_text(json.dumps(state,indent=2))
+    today=local_today().isoformat()
+
+    # GitHub is scheduled at 10:17, 11:17, and 12:17 Central as retry windows.
+    # Publish at most one article per Paola calendar day.
+    already_today = any(p.get('date') == today for p in posts)
+    if already_today or state.get('last_publish_date') == today:
+        POSTS.write_text(json.dumps(posts,indent=2),encoding='utf-8')
+        state['last_checked_date']=today
+        STATE.write_text(json.dumps(state,indent=2),encoding='utf-8')
+        print(f'No new article needed: a Paola Market post already exists for {today}.')
         subprocess.run([sys.executable, str(ROOT/'tools'/'seo_site.py')], check=False)
         return
-    OUT.mkdir(parents=True,exist_ok=True); (OUT/f'{slug}.html').write_text(article_html(topic,slug),encoding='utf-8')
+
+    # Find the next topic that is not already present. This prevents a duplicate
+    # topic from blocking the day when the topic queue eventually wraps around.
+    start=state.get('next_topic_index',0)%len(topics)
+    existing={p.get('slug') for p in posts}
+    selected=None
+    selected_i=None
+    for offset in range(len(topics)):
+        i=(start+offset)%len(topics)
+        topic=topics[i]
+        slug=slugify(topic['title'])
+        if slug not in existing:
+            selected=(topic,slug)
+            selected_i=i
+            break
+
+    if selected is None:
+        POSTS.write_text(json.dumps(posts,indent=2),encoding='utf-8')
+        state['last_checked_date']=today
+        STATE.write_text(json.dumps(state,indent=2),encoding='utf-8')
+        print('No unused topics remain. Add more topics to data/topics.json.')
+        subprocess.run([sys.executable, str(ROOT/'tools'/'seo_site.py')], check=False)
+        return
+
+    topic,slug=selected
+    OUT.mkdir(parents=True,exist_ok=True)
+    (OUT/f'{slug}.html').write_text(article_html(topic,slug),encoding='utf-8')
     excerpt=(f"An easy {topic.get('spirit','drink')} recipe with a simple method and serving tips." if topic['kind']=='recipe' else "A practical, beginner-friendly guide with simple tips you can use right away.")
-    posts.insert(0,{"slug":slug,"title":topic['title'],"category":topic['category'],"date":date.today().isoformat(),"excerpt":excerpt,"minutes":4 if topic['kind']=='recipe' else 5})
-    POSTS.write_text(json.dumps(posts,indent=2),encoding='utf-8'); state['next_topic_index']=(i+1)%len(topics); STATE.write_text(json.dumps(state,indent=2),encoding='utf-8')
-    print(f'Published: {topic["title"]}')
+    posts.insert(0,{"slug":slug,"title":topic['title'],"category":topic['category'],"date":today,"excerpt":excerpt,"minutes":4 if topic['kind']=='recipe' else 5})
+    POSTS.write_text(json.dumps(posts,indent=2),encoding='utf-8')
+    state['next_topic_index']=(selected_i+1)%len(topics)
+    state['last_publish_date']=today
+    state['last_checked_date']=today
+    STATE.write_text(json.dumps(state,indent=2),encoding='utf-8')
+    print(f'Published: {topic["title"]} ({today}, America/Chicago)')
     subprocess.run([sys.executable, str(ROOT/'tools'/'seo_site.py')], check=False)
-if __name__=='__main__': main()
+
+if __name__=='__main__':
+    main()
