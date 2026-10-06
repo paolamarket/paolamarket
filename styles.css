@@ -189,3 +189,30 @@
 .occasion-feature-actions a:hover{border-color:rgba(240,209,123,.6);transform:translateY(-2px);background:rgba(240,209,123,.06)}
 @media(max-width:1100px){.occasion-feature{grid-column:1/-1}}
 @media(max-width:640px){.occasion-feature{display:block;padding:32px 26px;min-height:auto}.occasion-feature-actions{margin-top:26px;min-width:0}.occasion-feature-actions a{width:100%;justify-content:center}.occasion-feature h3{font-size:42px}}
+
+/* === Paola Market custom wine-bottle cursor ===
+   Desktop / mouse devices only. Touch devices keep the native behavior. */
+@media (pointer:fine) {
+  html,
+  body,
+  body * {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='38' viewBox='0 0 30 38'%3E%3Cpath d='M12 1h6v5l2 3v5c0 2 2 4 3 6 2 3 3 6 3 10v5c0 1-1 2-2 2H6c-1 0-2-1-2-2v-5c0-4 1-7 3-10 1-2 3-4 3-6V9l2-3V1Z' fill='%23110d08' stroke='%23f0d17b' stroke-width='1.7'/%3E%3Cpath d='M10 15h10v17H10z' fill='%238f1d2c' opacity='.9'/%3E%3Cpath d='M12 2h6v4h-6z' fill='%23d7a33b'/%3E%3Cpath d='M11 18h8v9h-8z' rx='1' fill='%23f8f1df'/%3E%3Cpath d='M12 20h6M12 23h6' stroke='%23b78122' stroke-width='1'/%3E%3C/svg%3E") 15 2, auto;
+  }
+
+  a,
+  button,
+  .btn,
+  summary,
+  [role="button"],
+  .google-map-overlay,
+  .map-open-badge {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='40' viewBox='0 0 32 40'%3E%3Cg transform='rotate(-8 16 20)'%3E%3Cpath d='M13 1h6v5l2 3v5c0 2 2 4 3 6 2 3 3 6 3 10v6c0 1-1 2-2 2H7c-1 0-2-1-2-2v-6c0-4 1-7 3-10 1-2 3-4 3-6V9l2-3V1Z' fill='%23110d08' stroke='%23f6d97f' stroke-width='1.8'/%3E%3Cpath d='M11 15h10v18H11z' fill='%238f1d2c'/%3E%3Cpath d='M13 2h6v4h-6z' fill='%23e4b64f'/%3E%3Cpath d='M12 19h8v9h-8z' rx='1' fill='%23fff7e5'/%3E%3Ccircle cx='25' cy='9' r='3' fill='%23f0d17b'/%3E%3C/g%3E%3C/svg%3E") 16 3, pointer;
+  }
+
+  input,
+  textarea,
+  select,
+  [contenteditable="true"] {
+    cursor: text;
+  }
+}
