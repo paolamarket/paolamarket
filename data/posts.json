@@ -1,5 +1,13 @@
 [
   {
+    "slug": "cherry-bourbon-cooler-an-easy-at-home-recipe",
+    "title": "Cherry Bourbon Cooler: An Easy At-Home Recipe",
+    "category": "Cocktail Recipe",
+    "date": "2026-11-25",
+    "excerpt": "An easy bourbon recipe with a simple method and serving tips.",
+    "minutes": 4
+  },
+  {
     "slug": "cherry-bourbon-smash-an-easy-at-home-recipe",
     "title": "Cherry Bourbon Smash: An Easy At-Home Recipe",
     "category": "Cocktail Recipe",
@@ -470,13 +478,5 @@
     "date": "2026-09-26",
     "excerpt": "A simple citrus-forward batch drink you can scale for your next gathering.",
     "minutes": 4
-  },
-  {
-    "slug": "whiskey-basics",
-    "title": "Whiskey Basics: Bourbon, Rye and More",
-    "category": "Spirits Guide",
-    "date": "2026-09-25",
-    "excerpt": "A beginner-friendly look at common whiskey styles and how they differ.",
-    "minutes": 6
   }
 ]
