@@ -1,5 +1,13 @@
 [
   {
+    "slug": "spiced-bourbon-highball-an-easy-at-home-recipe",
+    "title": "Spiced Bourbon Highball: An Easy At-Home Recipe",
+    "category": "Cocktail Recipe",
+    "date": "2026-11-26",
+    "excerpt": "An easy bourbon recipe with a simple method and serving tips.",
+    "minutes": 4
+  },
+  {
     "slug": "cherry-bourbon-cooler-an-easy-at-home-recipe",
     "title": "Cherry Bourbon Cooler: An Easy At-Home Recipe",
     "category": "Cocktail Recipe",
@@ -470,13 +478,5 @@
     "date": "2026-09-27",
     "excerpt": "A practical way to build a flexible home bar without buying everything at once.",
     "minutes": 6
-  },
-  {
-    "slug": "easy-party-punch",
-    "title": "Easy Party Punch for a Small Gathering",
-    "category": "Entertaining",
-    "date": "2026-09-26",
-    "excerpt": "A simple citrus-forward batch drink you can scale for your next gathering.",
-    "minutes": 4
   }
 ]
