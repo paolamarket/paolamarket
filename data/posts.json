@@ -1,5 +1,13 @@
 [
   {
+    "slug": "spiced-bourbon-spritz-an-easy-at-home-recipe",
+    "title": "Spiced Bourbon Spritz: An Easy At-Home Recipe",
+    "category": "Cocktail Recipe",
+    "date": "2026-11-27",
+    "excerpt": "An easy bourbon recipe with a simple method and serving tips.",
+    "minutes": 4
+  },
+  {
     "slug": "spiced-bourbon-highball-an-easy-at-home-recipe",
     "title": "Spiced Bourbon Highball: An Easy At-Home Recipe",
     "category": "Cocktail Recipe",
@@ -470,13 +478,5 @@
     "date": "2026-09-28",
     "excerpt": "A bright, citrus-forward classic with an easy ratio to remember.",
     "minutes": 4
-  },
-  {
-    "slug": "home-bar-starter-guide",
-    "title": "A Simple Starter Guide to Building a Home Bar",
-    "category": "Spirits Guide",
-    "date": "2026-09-27",
-    "excerpt": "A practical way to build a flexible home bar without buying everything at once.",
-    "minutes": 6
   }
 ]
